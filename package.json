@@ -3,17 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "express": "^4.14.0",
     "react-scripts": "0.4.3"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "^2.8.1"
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node app.js & react-scripts start",
+    "build": "react-scripts build && NODE_ENV=production node app.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
