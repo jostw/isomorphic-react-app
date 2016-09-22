@@ -5,7 +5,7 @@ export const requestData = url => ({ type: REQUEST_DATA, url });
 export const receiveData = (url, json) => ({ type: RECEIVE_DATA, url, json });
 
 export const fetchData = pathname => {
-  const api = '/api' + pathname;
+  const api = `/api${pathname}`;
 
   return dispatch => {
     dispatch(requestData(pathname));
