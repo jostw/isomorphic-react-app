@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import rootReducer from '../reducers';
 
-let middleware = [thunkMiddleware];
+const sagaMiddleware = createSagaMiddleware();
+let middleware = [sagaMiddleware];
 
 if (process.env.NODE_ENV !== 'production') {
   const createLogger = require('redux-logger');
@@ -11,10 +12,9 @@ if (process.env.NODE_ENV !== 'production') {
   middleware = [...middleware, loggerMiddleware];
 }
 
-const configureStore = preloadedState => createStore(
-  rootReducer,
-  preloadedState,
-  applyMiddleware(...middleware)
-);
+const configureStore = preloadedState => ({
+  ...createStore(rootReducer, preloadedState, applyMiddleware(...middleware)),
+  runSaga: sagaMiddleware.run
+});
 
 export default configureStore;
