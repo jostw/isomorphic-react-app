@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import NavLink from './NavLink';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<NavLink />, div);
+describe('<NavLink />', () => {
+  it('renders a <Link />', () => {
+    const wrapper = shallow(<NavLink />);
+    expect(wrapper.is('Link')).toBe(true);
+  });
 });
